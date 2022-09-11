@@ -1,0 +1,111 @@
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active" style="background-color: white">
+            <h1 style="color: #414ba4">
+                <a href="index.html" class="logo" style="color: #414ba4">M.</a>
+            </h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="#"><span class="icon-home fa fa-home"></span> Home</a>
+                </li>
+                <li>
+                    <a href="#"><span class="icon-home fa fa-user"></span> About</a>
+                </li>
+                <li>
+                    <a href="#"><span class="icon-home fa fa-sticky-note"></span> Blog</a>
+                </li>
+                <li>
+                    <a href="#"><span class="icon-home fa fa-cogs"></span> Services</a>
+                </li>
+                <li>
+                    <a href="#"><span class="icon-home fa fa-paper-plane"></span> Contacts</a>
+                </li>
+            </ul>
+        </nav>
+       
+        <!-- Page Content  -->
+        <div id="content" class="p-4" style="background-color: #f7fafd">
+            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle position-img"
+            style="width: 40px;" alt="Avatar" />
+        <div class="dropdown position-drop">
+            <div type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i style="font-size: 20px" class="fa-solid fa-chevron-down icon-home"></i>
+            </div>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+            <!-- Tabs navs -->
+            <div class="row" style="margin-top:20px">
+                <div class="col-6">
+                    <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="tablink-text nav-link active" id="ex1-tab-1" data-mdb-toggle="tab"
+                                href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">All
+                                Boards</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="tablink-text nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2"
+                                role="tab" aria-controls="ex1-tabs-2" aria-selected="false">Starred Boards</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="tablink-text nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3"
+                                role="tab" aria-controls="ex1-tabs-3" aria-selected="false">Public Boards</a>
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="ex1-content">
+                        <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel"
+                            aria-labelledby="ex1-tab-1">
+                            <div class="row">
+                                <div class="col-2">
+                                    <button (click)="redirecSelectTemlate()" type="button" class="button-home"><i style="font-size: 30px;"
+                                            class="fa-solid fa-circle-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="col-2 mr-left"  *ngFor="let boards of boardsByUserID">
+                                    <button (click)="redirectBoardDetail(boards.url)" type="button" class="button-board">
+                                        <img class="img-board" src="https://www.reetro.app/static/media/temp-card-img-4.9239b2e00077251231a15e3f4a8b35dc.svg" alt="">
+                                        <h6>{{boards.name}}</h6>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                            Tab 2 content
+                        </div>
+                        <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                            Tab 3 content
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-3">
+                    <div class="row">
+                        <div class="col">
+                            <select style="font-size: 15px" class="d-flex justify-content-between form-select form-select-lg mb-3"
+                                aria-label=".form-select-lg example">
+                                <option value="1" selected>{{Name}}</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select style="font-size: 15px" class="d-flex justify-content-between form-select form-select-lg mb-3"
+                                aria-label=".form-select-lg example">
+                                <option selected>Sort by Modified Date</option>
+                                <option value="1">Sort by Modified Date</option>
+                                <option value="2">Sort by Created Date</option>
+                                <option value="3">Sort by Title (Z-A)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tabs content -->
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,43 @@
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar  w3-collapse w3-top bar" id="mySidebar">
+    <div class="w3-bar-block ">
+        <a href="/dashboard" class="w3-bar-item w3-button padding "><i class="fa fa-building"></i>Dashboard</a>
+        <a href="/user" class="w3-bar-item w3-button padding "><i class="fa fa-building"></i>Users</a>
+    </div>
+</nav>
+
+<div class="w3-main main" >
+    <table class="table table-hover" >
+        <thead>
+        <tr class="tableUser table-secondary">
+            <th scope="col">Email</th>
+            <th scope="col">Display Name</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Day of Birth</th>
+            <th scope="col">Create Day</th>
+        </tr>
+        </thead>
+        <tbody class="table-light mt-5 p-xxl-5 tableUser"  >
+        <ng-container *ngFor="let user of users" >
+            <tr>
+                <td>{{user.email}}</td>
+                <td>{{user.displayName}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.dob}}</td>
+                <td>{{user.createDate}}</td>
+            </tr>
+        </ng-container>
+
+
+        </tbody>
+    </table>
+</div>

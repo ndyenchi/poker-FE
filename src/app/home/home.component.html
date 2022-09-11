@@ -1,0 +1,145 @@
+<div class="containers">
+  <div class="">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="container-fluid p-0">
+
+        <img src="https://imgur.com/vWNqDDq.jpg" width="230px">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          </ul>
+
+          <div *ngIf="!isLoggedIn">
+            <button type="button" class="btn btn-outline-info me-3 btn-lg  fw-bold" data-bs-toggle="modal"
+              data-bs-target="#staticBackdropLogin">
+              Login
+            </button>
+            <button type="button" class="btn btn-info text-white btn-lg  fw-bold" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop1">
+              Sign up
+            </button>
+          </div>
+
+          <div *ngIf="isLoggedIn">
+            <div class="dropdown">
+              <button type="button" class=" btn btn-outline-light fs-5 border-0  rounded text-black dropdown-toggle"
+                data-bs-toggle="dropdown">
+                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" class="rounded-circle shadow-4"
+                  style="width: 30px;" alt="Avatar" /> {{ currentUser.displayName }} 
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end ">
+                <li ><a class="dropdown-item " href="#"><img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+                      class="rounded-circle shadow-4" style="width: 30px;" alt="Avatar" /> {{ currentUser.displayName }} <i class="fa-solid fa-pen"></i>
+                  </a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> My account</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-address-card"></i> Contact us</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-life-ring"></i> Support</a></li>
+                <li><a class="dropdown-item poiter" (click)="signOut()"><i class="fa-solid fa-right-from-bracket"></i>
+                    Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="row down">
+
+    <div class="col-5">
+      <img src="https://imgur.com/pk9JJzM.jpg" class="h-50">
+    </div>
+    <div class="col-7 down-t">
+      <p class="h1s"><span class="text-white border-blue">Scrum Poker</span> <span class="blue sdown">and Retrospective
+          Tool </span> <span class="black ">for agile development teams</span></p>
+      <div class="upb">
+
+        <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-info me-3 btn-lg  " data-bs-toggle="modal"
+        data-bs-target="#staticBackdropLogin">
+        Start Poker Planning Game
+      </button>
+      <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-info me-3 btn-lg  " data-bs-toggle="modal"
+      data-bs-target="#staticBackdropLogin">
+      Start Retrospective
+    </button>
+
+
+        
+        <button *ngIf="isLoggedIn" routerLink="/create-game" type="button" class="btn btn-outline-info blue btn-lg me-5">Start Poker Planning Game</button>
+        <button *ngIf="isLoggedIn" routerLink="/home-retrospective" type="button" class="btn btn-outline-info blue btn-lg">Start Retrospective</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Login -->
+
+<!-- Modal Sign Up -->
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="d-flex justify-content-between ">
+          <h5 class="modal-title my-4" id="staticBackdropLabel">Sign in</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <app-login></app-login>
+
+      </div>
+
+    </div>
+  </div>
+</div> -->
+<app-login></app-login>
+<app-register></app-register>
+<!-- Modal Login -->
+<!-- <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <div class="d-flex justify-content-between ">
+          <h5 class="modal-title my-4" id="staticBackdropLabel">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <app-register></app-register>
+
+      </div>
+
+    </div>
+  </div>
+</div> -->
+<!-- Modal Forgot -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Sign Up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class="d-flex justify-content-between ">
+          <h5 class="modal-title my-4" id="staticBackdropLabel">Forgot Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <app-forgot-password></app-forgot-password>
+
+      </div>
+
+    </div>
+  </div>
+</div>

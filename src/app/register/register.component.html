@@ -1,0 +1,178 @@
+
+
+
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+  
+    <div class="modal-body">
+      <div class="d-flex justify-content-between ">
+        <h5 class="modal-title my-4" id="staticBackdropLabel">Sign Up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+        <div class="form-group">   
+          <input type="email" class="form-control" formControlName="email" id="email" name="email" placeholder="Email" 
+          maxlength="50" [(ngModel)]="user.email">
+        </div>
+        <div *ngIf="FormRegister.email.invalid && (FormRegister.email.dirty||FormRegister.email.touched)" class="alert alert-danger mt-1">
+          <div *ngIf="FormRegister.email.errors">
+              <div *ngIf="FormRegister.email.errors.required">
+                  <small class="form-text text-danger">Email is required.</small>
+              </div>
+            </div>
+            <div *ngIf="FormRegister.email.errors.email">
+              <small id="emailHelp" class="form-text text-danger">Email is invalid</small>
+          </div>
+       </div>
+        <br>
+        <div class="form-group">     
+          <input type="password" class="form-control" formControlName="password" id="password" name="password" placeholder="Password" 
+          maxlength="50" minlength="8" [(ngModel)]="user.password">
+        </div>
+        <div *ngIf="FormRegister.password.invalid && (FormRegister.password.dirty||FormRegister.password.touched)" class="alert alert-danger mt-1" >
+          <div *ngIf="FormRegister.password.errors">
+              <div *ngIf="FormRegister.password.errors.required">
+                  <small class="form-text text-danger">Password is required.</small>
+              </div>
+            </div>
+            <div *ngIf="FormRegister.password.errors.pattern">
+              <small id="emailHelp" class="form-text text-danger">Password doesn’t follow format.</small>
+          </div>
+       </div>
+        <br>
+        <div class="form-group">
+            <input type="password" class="form-control" formControlName="repassword" id="repassword" name="repassword" placeholder="Re-enter Password" 
+            maxlength="50" minlength="8">
+        </div>
+        <div *ngIf="FormRegister.repassword.invalid && (FormRegister.repassword.dirty||FormRegister.repassword.touched)" class="alert alert-danger mt-1">
+          <div *ngIf="FormRegister.repassword.errors" >
+              <div *ngIf="FormRegister.repassword.errors.required" >
+                  <small class="form-text text-danger">Repassword is required.</small>
+              </div>
+              <div *ngIf="FormRegister.repassword.errors.minlength" >
+                <small class="form-text text-danger">Repassword must be at least 8 characters long.</small>
+            </div>
+            </div>
+            <div *ngIf="FormRegister.repassword.errors.mustMatch">
+              <small class="form-text text-danger">Repassword didn't match</small>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="text" class="form-control" id="displayName" formControlName="displayName" name="displayName" placeholder="Display Name" 
+            maxlength="50" [(ngModel)]="user.displayName">
+        </div>
+        <div *ngIf="FormRegister.displayName.invalid && (FormRegister.displayName.dirty||FormRegister.displayName.touched)" class="alert alert-danger mt-1">
+          <div *ngIf="FormRegister.displayName.errors">
+              <div *ngIf="FormRegister.displayName.errors.required">
+                  <small class="form-text text-danger">Display name is required.</small>
+              </div>
+          </div> 
+        </div>
+        <br>
+        <div *ngIf="!FormRegister.password.invalid && !FormRegister.email.invalid && !FormRegister.repassword.invalid && !FormRegister.displayName.invalid">
+          <button type="submit" class="btn btn-primary"  style="width: 100%;">Sign Up</button>
+        </div>
+        <h6 style="text-align: center;margin-top: 20px;">Already have an account? <a  class="r text-decoration-none pe-auto text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Login
+        </a></h6>
+      </form>
+      <div *ngIf="FormRegister.password.invalid || FormRegister.email.invalid || FormRegister.repassword.invalid || FormRegister.displayName.invalid">
+        <button type="submit" class="btn btn-primary"  style="width: 100%;">Sign Up</button>
+        </div>
+        
+
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+  <div class="form-group">   
+    <input type="email" class="form-control" formControlName="email" id="email" name="email" placeholder="Email" 
+    maxlength="50" [(ngModel)]="user.email">
+  </div>
+  <div *ngIf="FormRegister.email.invalid && (FormRegister.email.dirty||FormRegister.email.touched)" class="alert alert-danger mt-1">
+    <div *ngIf="FormRegister.email.errors">
+        <div *ngIf="FormRegister.email.errors.required">
+            <small class="form-text text-danger">Email is required.</small>
+        </div>
+      </div>
+      <div *ngIf="FormRegister.email.errors.email">
+        <small id="emailHelp" class="form-text text-danger">Email is invalid</small>
+    </div>
+ </div>
+  <br>
+  <div class="form-group">     
+    <input type="password" class="form-control" formControlName="password" id="password" name="password" placeholder="Password" 
+    maxlength="50" minlength="8" [(ngModel)]="user.password">
+  </div>
+  <div *ngIf="FormRegister.password.invalid && (FormRegister.password.dirty||FormRegister.password.touched)" class="alert alert-danger mt-1" >
+    <div *ngIf="FormRegister.password.errors">
+        <div *ngIf="FormRegister.password.errors.required">
+            <small class="form-text text-danger">Password is required.</small>
+        </div>
+      </div>
+      <div *ngIf="FormRegister.password.errors.pattern">
+        <small id="emailHelp" class="form-text text-danger">Password doesn’t follow format.</small>
+    </div>
+ </div>
+  <br>
+  <div class="form-group">
+      <input type="password" class="form-control" formControlName="repassword" id="repassword" name="repassword" placeholder="Re-enter Password" 
+      maxlength="50" minlength="8">
+  </div>
+  <div *ngIf="FormRegister.repassword.invalid && (FormRegister.repassword.dirty||FormRegister.repassword.touched)" class="alert alert-danger mt-1">
+    <div *ngIf="FormRegister.repassword.errors" >
+        <div *ngIf="FormRegister.repassword.errors.required" >
+            <small class="form-text text-danger">Repassword is required.</small>
+        </div>
+        <div *ngIf="FormRegister.repassword.errors.minlength" >
+          <small class="form-text text-danger">Repassword must be at least 8 characters long.</small>
+      </div>
+      </div>
+      <div *ngIf="FormRegister.repassword.errors.mustMatch">
+        <small class="form-text text-danger">Repassword didn't match</small>
+      </div>
+  </div>
+  <br>
+  <div class="form-group">
+      <input type="text" class="form-control" id="displayName" formControlName="displayName" name="displayName" placeholder="Display Name" 
+      maxlength="50" [(ngModel)]="user.displayName">
+  </div>
+  <div *ngIf="FormRegister.displayName.invalid && (FormRegister.displayName.dirty||FormRegister.displayName.touched)" class="alert alert-danger mt-1">
+    <div *ngIf="FormRegister.displayName.errors">
+        <div *ngIf="FormRegister.displayName.errors.required">
+            <small class="form-text text-danger">Display name is required.</small>
+        </div>
+    </div> 
+  </div>
+  <br>
+  <div *ngIf="!FormRegister.password.invalid && !FormRegister.email.invalid && !FormRegister.repassword.invalid && !FormRegister.displayName.invalid">
+    <button type="submit" class="btn btn-primary"  style="width: 100%;">Sign Up</button>
+  </div>
+  <h6 style="text-align: center;margin-top: 20px;">Already have an account? <a  class="r text-decoration-none pe-auto text-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Login
+  </a></h6>
+</form>
+<div *ngIf="FormRegister.password.invalid || FormRegister.email.invalid || FormRegister.repassword.invalid || FormRegister.displayName.invalid">
+  <button type="submit" class="btn btn-primary"  style="width: 100%;">Sign Up</button>
+  </div> -->
+  
+
+ 
+
+

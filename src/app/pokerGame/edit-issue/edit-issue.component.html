@@ -1,0 +1,72 @@
+ <!-- <div class="edit-issue-container">
+   <div class="edit-issue-wrapper"> -->
+
+
+    
+     <form >
+       <div class="key-issue-wrapper form-group">
+        <div class="form-control-box">
+          <div class="key-label">
+            <div class="key-text">{{issue.key}}</div>
+            <div class="title-edit" [hidden]="isChange">
+              <div (click)="updateContent()">{{issue.title}}</div>
+            </div>
+            <div class="edit" [hidden]="!isChange">
+              <textarea name="title" #title>{{issue.title}}</textarea>
+              <div class="action-con">
+                <div class="btn btn-outline-primary btn-lg widthb" (click)="updateContent()" style="width: 350px;">Cancel</div>
+                <div class="btn btn-primary btn-lg widthb" (click)="saveTitle(title.value)" (click)="updateContent()" style="width: 350px;" >Save</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control-box">
+          <p> Link</p>
+          <div class="link-edit" [hidden]="isChangeLink">
+            <div *ngIf="!issue.link">
+              <div class="link-con" (click)="changeLink()">Add a link to the issue</div>
+            </div>
+            <div *ngIf="issue.link" >
+              <a rel="noopener noreferrer" target="_blank" href="{{issue.link}}">
+                <div class="link-con" (click)="changeLink()">{{issue.link}}</div></a>
+            </div>
+            
+          </div>
+          <div class="edit-link" [hidden]="!isChangeLink" >
+
+             <textarea name="linkEdit" id="link" value="issue.link" [(ngModel)]="issue.link" ></textarea> 
+
+
+            <div class="action-link-con">
+              <div class="btn btn-outline-primary btn-lg widthb"(click)="changeLink()" style="width: 350px;">Cancel</div>
+              <div class="btn btn-primary btn-lg widthb"  (click)="changeLink()" style="width: 350px;" (click)='saveLink(issue.link)'>Save</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-control-box">
+          <p> Description</p>
+          <div class="link-edit" [hidden]="isChangeDescription">
+            <div *ngIf="!issue.description">
+              <div class="link-con" (click)="changeDescription()">Add a description...</div>
+            </div>
+            <div *ngIf="issue.description">
+              <div class="link-con" (click)="changeDescription()">{{issue.description}}</div>
+            </div>
+          </div>
+          <div class="edit-description" [hidden]="!isChangeDescription">
+            <textarea name="description" id="" cols="30" rows="10"  [(ngModel)]="issue.description"></textarea>
+            <div class="action-description-con">
+              <div class="btn btn-outline-primary btn-lg widthb" (click)="changeDescription()" style="width: 350px;">Cancel</div>
+              <div class="btn btn-primary btn-lg widthb"  (click)="changeDescription()" (click)="saveDescription(issue.description)" style="width: 350px;">Save</div>
+            </div>
+          </div>
+        </div>
+       </div>
+
+
+     </form>
+   <!-- </div>
+ </div> -->

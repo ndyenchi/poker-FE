@@ -1,0 +1,367 @@
+<div class="containers" *ngIf="currentUser">
+  <div class="">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="container-fluid p-0">
+
+        <img src="https://imgur.com/vWNqDDq.jpg" width="180px">
+        <img src="https://imgur.com/vWNqDDq.jpg" width="180px">
+
+        <div class="btn-group">
+          <a class="text-decoration-none clb btn btn-outline-light fs-3 border-0 fw-bold rounded ms-3 dropdown-toggle "
+             type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside"
+             aria-expanded="false">
+            {{ name}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+            <li><a class="dropdown-item pe-5" href="#"><i class="fa-solid fa-home"></i> Planding Page</a></li>
+            <!-- <li><a class="dropdown-item pe-5" href="#"><i class="fa-solid fa-rectangle-list"></i> Voting History</a>
+            </li> -->
+            <li><a type="button" class="dropdown-item pe-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+              <i class="fa-solid fa-rectangle-list"></i> Voting History
+            </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          </ul>
+          <div>
+            <div class="dropdown btn p-0 border-0 me-2">
+              <button type="button"
+                      class=" btn btn-outline-light btn-lg fs-5 border-0  rounded text-black dropdown-toggle"
+                      data-bs-toggle="dropdown" data-bs-toggle="modal" data-bs-target="#edit-user">
+                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" class="rounded-circle shadow-4"
+                     style="width: 30px;" alt="Avatar"> {{ currentUser.displayName }}
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end ">
+                <li><a class="dropdown-item " href="#"><img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+                                                            class="rounded-circle shadow-4" style="width: 30px;" alt="Avatar" /> {{ currentUser.displayName }}
+                  <i class="fa-solid fa-pen"></i>
+                </a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> My account</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-address-card"></i> Contact us</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-life-ring"></i> Support</a></li>
+                <li (click)="signOut()"><a class="dropdown-item poiter"><i class="fa-solid fa-right-from-bracket"></i>
+                  Sign out</a></li>
+              </ul>
+            </div>
+
+
+            <button type="button" class="btn btn-outline-primary  btn-lg me-2" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+              <i class="fa-solid fa-user-plus"></i> Invite players
+            </button>
+            <button class="btn btn-outline-primary  btn-lg" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+                    class="fa-solid fa-file-lines"></i></button>
+
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="row justify-content-center mt-2">
+    <div class="col-1  p-3"></div>
+    <div class="col-3 ">
+      <div class="row p-0">
+        <div class="col-12  p-3 htb d-flex align-items-stretch pt-0 ">
+
+
+        </div>
+        <div *ngIf="!checkReveal" class="col-12  p-3 hc rounded-4 bgs text-center p-5 shadow">
+          <img src="https://imgur.com/0pGAdYW.jpg" class="rounded-circle shadow-4" style="width: 80px;" alt="Avatar" />
+          <p class="mt-1 fs-4 clb"> Pick your cards!</p>
+
+
+        </div>
+        <div *ngIf="checkReveal" class="col-12  p-3 hc rounded-4 bgse text-center p-5 shadow">
+
+          <button *ngIf="!displaysecondStart && !showCard" class="btn btns  btn-primary btn-lg border-0 p-4 mt-4 "
+                  (click)="waitAfterSecond()" [disabled]="!checkIssue ? 'disabled': null">Reveal cards</button>
+
+          <button *ngIf="showCard " class="btn btns  btn-primary btn-lg border-0 p-4 mt-4 " (click)="revealEnd()" (click)="getVotingHistory()">Start
+            new voting</button>
+          <p *ngIf="displaysecondStart"
+             style="color:rgb(0, 39, 145);font-size:60px;margin-top: 30px; font-family: monospace;">{{displaysecond}}
+
+        </div>
+        <div class="col-12  p-3 htb">
+
+          <div class="d-flex justify-content-center">
+            <div *ngFor="let ug of gameUser" class="me-2 ">
+
+              <div class="d-flex justify-content-center">
+                <div *ngIf="ug.flipCard === false"
+                     class="border-0 bg-secondary bg-opacity-25 rounded-2  py-4  width htbs shadow-sm ">
+
+                </div>
+                <div *ngIf="ug.flipCard === true && !showCard"
+                     class="border-0 bg-primary bg-opacity-25 rounded-2   width htbs shadow-sm  ">
+                  <img src="https://imgur.com/0bDXYKE.jpg" style="height:107px;width: 80px;" />
+
+                </div>
+                <div *ngIf="ug.flipCard === true && showCard"
+                     class="border-0 bg-secondary bg-opacity-25 rounded-2  py-4  width htbs shadow-sm text-center">
+                  <p class="fs-3 "> {{ug.point}}</p>
+                </div>
+              </div>
+              <div> {{ug.user.displayName}}</div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1  "></div>
+  </div>
+
+  <div class="">
+    <div *ngIf="!showCard" class="fixed-bottom ">
+      <div class="d-flex justify-content-center">
+        <p class="fs-3"> Choose your card</p>
+      </div>
+
+      <ul class="list-group ft list-group-horizontal  justify-content-center">
+        <!-- <ng-container *ngFor="let number of numberList">
+          <li class="list-group-item border-0"><button class="btn btnss btn-card py-4 fs-1 width shadow"
+            [class.active]="isActive(number)" (click)="chooseCard(number)" value="{{number}}">
+            {{number}}</button>
+          </li>
+        </ng-container> -->
+        <div *ngFor="let btn of numberList;let i=index">
+          <li class="list-group-item border-0 "><button class="btn btnss btn-card py-4 fs-1 width shadow"
+                                                        style="color: black ;" [style.background-color]="selected == i ? '#00AAE7' : 'white'"
+                                                        (click)=" selected == i? selected = -i:selected =i" (click)="chooseCard(btn, selected)" id="btn-card"
+                                                        [disabled]="!checkIssue ? 'disabled': null">
+            {{btn}}
+          </button></li>
+        </div>
+      </ul>
+    </div>
+
+    <div *ngIf="showCard" class="d-flex justify-content-center mb-5 fixed-bottom ">
+
+      <div class="text-center me-3" *ngFor=" let usTrue of userVoteTrue">
+        <div class="border-2 border rounded-2  py-4  width htbs shadow-sm ">
+          <p class="fs-3">{{usTrue.point}}</p>
+        </div>
+        <p> 1 Vote</p>
+      </div>
+
+      <div class="d-flex justify-content-end widthAverage">
+        <p class="align-self-center  fs-3">Average: {{average}}</p>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div class="offcanvas offcanvas-end ofWidth px-4" tabindex="-1" id="offcanvasRight" data-bs-backdrop="false"
+     aria-labelledby="offcanvasRightLabel">
+  <div class="mt-4">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel">Issues</h5>
+      <div class=" d-flex align-items-center">
+        <button class="btn btn-outline-light btn-lg fs-5 border-0  rounded  rounded-circle text-black px- "><i
+                class="fa-solid fa-arrow-down-up-across-line"></i></button>
+
+        <!-- <button class="btn btn-outline-light btn-lg fs-5 border-0  rounded  rounded-circle text-black px-4 "><i
+            class="fa-solid fa-ellipsis-vertical"></i></button> -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-all-issue">delete
+          all</button>
+
+        <div class="hit "></div>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="offcanvas-body " style="height: 800px;">
+      <div class="">
+        <app-show-issue [issues]="issues" (isVote)="voteIssue($event)" (isDelete)="getIdIssue($event)"
+                        (issue)="getIssue($event)"></app-show-issue>
+
+      </div>
+
+      <div *ngIf="!isLoggedIn" class="d-grid gap-2 mx-auto">
+        <button (click)="isLoggedIn =!isLoggedIn" type="button"
+                class="btn btn-outline-light btn-lg fs-5 border-0  rounded text-black text-start"> <i
+                class="fa-solid fa-plus"></i> Add an issue</button>
+      </div>
+
+      <div *ngIf="isLoggedIn">
+
+        <app-create-issue (isLoggedInEmitter)="handleLoggedInEmitter()"></app-create-issue>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- invite player -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Invite Players</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3" ngxCopyPaste #cp="copy">
+            <input type="text" class="form-control" [(ngModel)]="temp" name="link" id="link" maxlength="50"
+                   placeholder="link" disabled />
+            <!-- <label  name="link" id="link">{{temp}}</label> -->
+          </div>
+          <div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    style="width: 100%;background: #00AAE7 0% 0% no-repeat padding-box;" (click)="cp.copy()">Copy invitation
+              link</button>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--////////////////////////-->
+
+
+
+
+<!-- voting history -->
+
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Voting history</h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-voting-history   [voting]= "voting" ></app-voting-history>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!------------------------------------->
+
+
+
+<div class="modal fade" id="delete-all-issue" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title" id="staticBackdropLabel" style="text-align: left;
+            font: normal ;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;">Wait! Are you sure you want to delete all this issue</h5>
+        <h6 style="font-size: 16px;color: #000000A3;"> Once you confirm, you will not be able to recover them. </h6>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background: #00000029 0% 0% no-repeat padding-box;
+            border-radius: 8px;">Cancel</button>
+        <button (click)="deleteAllIssues()" type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"
+                style="background: #FF394D 0% 0% no-repeat padding-box;
+            border-radius: 8px;">Delete Issue</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-bs-toggle="modal" data-bs-target="#staticBackdropLogin" style="display: none;" id="btnLogin"></button>
+<app-login (onLoginSuccess)="processLogin($event)"></app-login>
+
+
+<app-register></app-register>
+
+
+
+
+<!-- delete issue -->
+
+<div class="modal fade" id="delete-issue" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Delete Issue</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title" id="staticBackdropLabel" style="text-align: left;
+            font: normal ;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;">Are You Sure Delete This Issue</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background: #00000029 0% 0% no-repeat padding-box;
+            border-radius: 8px;">Cancel</button>
+        <button (click)="deleteIssue()" type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="background: #FF394D 0% 0% no-repeat padding-box;
+            border-radius: 8px;">Delete Issue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- edit issue -->
+
+
+
+<div class="modal fade" id="edit-issue" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-edit-issue [issue]="issue" (issueEdit)="editIssue($event)"></app-edit-issue>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- edit user -->
+<div class="modal fade" id="edit-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 style="text-align: center;justify-content: center">Account's Information</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <app-edit-user [user]="userDTO"  ></app-edit-user>
+
+    </div>
+  </div>
+</div>

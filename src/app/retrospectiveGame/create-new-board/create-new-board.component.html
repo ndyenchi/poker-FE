@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="createNameForm">
+    <h5 style="text-align: center">Create new board</h5>
+    <div> <input type="text" name="name" id="name" class="form-control margin-all" formControlName="name" placeholder="Retrospective {{myDate | date:'dd-MM'}}">
+        <!-- {{myDate | date:'dd-MM'}} -->
+    </div>
+    <div *ngIf="CreateNameForm.name.invalid && (CreateNameForm.name.dirty||CreateNameForm.name.touched)"
+        class="alert alert-danger mt-1">
+        <div *ngIf="CreateNameForm.name.errors">
+            <div *ngIf="CreateNameForm.name.errors.required">
+                <small class="form-text text-danger">
+                    Please enter the title for your board.</small>
+            </div>
+            <div *ngIf="CreateNameForm.name.errors.maxlength">
+                <small class="form-text text-danger">You cannot enter more than 50 characters.</small>
+            </div>
+        </div>
+    </div>
+    <select class="form-select margin-all" aria-label="Default select example">
+        <option value="1" selected>{{Name}}'s Team </option>
+    </select>
+    <div style="float: right;margin-top: 25px">
+        <button type="button" class="btn btn-secondary button-cancle" data-mdb-dismiss="modal">Cancle</button>
+        <button *ngIf="CreateNameForm.name.valid" style="margin-left: 25px" type="submit"
+            class="btn btn-primary button-create" #myModalClose data-mdb-dismiss="modal">Create</button>
+        <div (click)="alert()" *ngIf="!CreateNameForm.name.valid" style="margin-left: 25px" type="text"
+            class="btn btn-primary button-create" #myModalClose data-mdb-dismiss="modal">
+            <p style="margin-top: 3px;">Create</p>
+        </div>
+    </div>
+</form>

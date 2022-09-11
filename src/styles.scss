@@ -1,0 +1,13 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.modal-issue {
+    min-width: 850px;
+    min-height: 600px;
+
+    .modal-content {
+        border-radius: 20px;
+    }
+}

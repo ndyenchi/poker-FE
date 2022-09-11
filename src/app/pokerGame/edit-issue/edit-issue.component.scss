@@ -1,0 +1,165 @@
+// .edit-issue-container {
+//     padding: 0 44px;
+//     font-size: 20px;
+//     .edit-issue-wrapper {
+//         padding: 34px;
+        .key-label {
+            position: relative;
+            left: -8px;
+            width: 100%;
+            cursor: pointer;
+
+            .key-text {
+                padding: 8px 8px 8px 10px;
+                border-radius: 10px;
+                width: 40%;
+
+                &:hover {
+                    background-color: #f1f1f1;
+                }
+            }
+        }
+        .edit-key{
+            textarea{
+                width: 100%;
+                resize: none;
+            }
+
+            .action-con{
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                width: 100px;
+               
+            }
+            .action-btn{
+                position: relative;
+                height: 50px;
+                width: 100%;
+                text-align: center;
+                border: none;
+                background-color: white;
+                line-height: normal;
+                &:hover {
+                    background-color: #f1f1f1;
+                }
+            }
+        }
+        .title-edit{
+            width: 100%;
+            cursor: pointer;
+            padding: 8px 8px 8px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 22px;
+
+            &:hover {
+                background-color: #f1f1f1;
+            }
+            
+        }
+        .edit{
+            textarea{
+                width: 100%;
+                resize: none;
+            }
+
+            .action-con{
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+
+               
+            }
+            .action-btn{
+                position: relative;
+                height: 50px;
+                width: 100%;
+                text-align: center;
+                border: none;
+                background-color: white;
+                line-height: normal;
+                &:hover {
+                    background-color: #f1f1f1;
+                }
+            }
+        }
+        .form-control-box {
+            margin-bottom: 50px;
+        }
+        .link-edit{
+            width: 100%;
+            cursor: pointer;
+            padding: 8px 20px;
+            background-color: #f1f1f1;
+            height: auto;
+            border-radius: 10px;
+            .link-con{
+                border: none;
+            }
+            &:hover {
+                background-color: #e8e9ea;   
+            }
+        }
+        .edit-link{
+            
+            textarea{
+                width: 100%;
+                height: 50px;
+                resize: none;
+            }
+
+            .action-link-con{
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+
+              
+            }
+            .action-btn{
+                position: relative;
+                height: 50px;
+                width: 100%;
+                text-align: center;
+                border: none;
+                background-color: white;
+                line-height: normal;
+                &:hover {
+                    background-color: #f1f1f1;
+                }
+            }
+        }
+        .edit-description{
+            
+            textarea{
+                width: 100%;
+                height: 100px;
+                resize: none;
+            }
+
+            .action-description-con{
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+
+                
+            }
+            .action-btn{
+                position: relative;
+                height: 50px;
+                width: 100%;
+                text-align: center;
+                border: none;
+                background-color: white;
+                line-height: normal;
+                &:hover {
+                    background-color: #f1f1f1;
+                }
+            }
+        }
+//     }
+// }
+
+p{
+    font-weight: bold;
+}

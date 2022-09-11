@@ -1,0 +1,37 @@
+<form form (ngSubmit)="onsubmit()" [formGroup]="formGroup">
+    <div class="container">
+        <div>
+            <input type="text" class="form-control" name="email" formControlName="username" id="email"
+                   maxlength="50" placeholder="Username"/>
+        </div>
+        <div *ngIf="FormGroup.username.invalid && (FormGroup.username.dirty||FormGroup.username.touched)"
+             class="alert alert-danger mt-1">
+            <div *ngIf="FormGroup.username.errors">
+                <small class="form-text text-danger">Username is invalid</small>
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="password" class="form-control" name="password" formControlName="password" id="password"
+                   maxlength="50" placeholder="Password"/>
+        </div>
+        <div *ngIf="FormGroup.password.invalid && (FormGroup.password.dirty||FormGroup.password.touched) "
+             class="alert alert-danger mt-1 ">
+            <div *ngIf="FormGroup.password.errors">
+                <div *ngIf="FormGroup.password.errors.required">
+                    <small class="form-text text-danger">Password is required.</small>
+                </div>
+            </div>
+            <div *ngIf="FormGroup.password.errors.pattern">
+                <small id="emailHelp" class="form-text text-danger">Password must be at least 8 characters
+                    long, at least one uppercase, one lowercase, one special characters, and one
+                    number</small>
+            </div>
+        </div>
+        <br>
+        <div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            <br/>
+        </div>
+    </div>
+</form>

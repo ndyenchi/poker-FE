@@ -1,0 +1,91 @@
+<!-- <ng-container *ngFor = "let is of issues">
+  <div class=" mb-3 rounded-4 shadow  bgs cursor-pointer" (click)="handleShowEditIssue(is)">
+    <div class="card-body position-relative">
+  
+      <div class="dropdown  position-absolute top-0 end-0">
+        <button type="button" class=" btn btn-outline-light btn-lg fs-5 border-0  rounded  rounded-circle text-black "
+          data-bs-toggle="dropdown">
+          <i class="fa-solid fa-ellipsis"></i>
+        </button>
+        <ul class="dropdown-menu  ">
+  
+  
+          <li><a class="dropdown-item" href="#"> Open</a></li>
+          <li><a class="dropdown-item" href="#">Move to top</a></li>
+          <li><a class="dropdown-item" href="#"> Move to bottom</a></li>
+          <li (click)="delete(is.id)"> <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#delete-issue">
+              Delete
+            </button></li>
+            
+        </ul>
+      </div>
+  
+      <div class="">
+        <p>{{is.key}}</p>
+      </div>
+  
+      <div>
+        <p> {{is.title}}</p>
+      </div>
+  
+      <div class="d-flex justify-content-between">
+        <button class=""
+                style="color: black ;" [style.background-color]="is.status ? '#00AAE7' : 'white'"
+                (click)="vote(is.id)">
+                {{ is.status ? "enable" : "disable"}}
+              </button>
+  
+        <button class="btn btn-light fw-bold "><i class="fa-solid fa-minus"></i></button>
+      </div>
+    </div>
+  
+  </div>
+</ng-container> -->
+
+
+
+<div class=" mb-3 rounded-4 shadow  bgs " *ngFor="let is of issues">
+  <div class="card-body position-relative"  (click)="sendIssue(is)">
+    <div class="dropdown  position-absolute top-0 end-0">
+      <button type="button" class=" btn btn-outline-light btn-lg fs-5 border-0  rounded  rounded-circle text-black "
+        data-bs-toggle="dropdown">
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+      <ul class="dropdown-menu  ">
+
+
+        <li><a class="dropdown-item" href="#"> Open</a></li>
+        <li><a class="dropdown-item" href="#">Move to top</a></li>
+        <li><a class="dropdown-item" href="#"> Move to bottom</a></li>
+        <li (click)="delete(is.id)"> <button type="button" class="dropdown-item" data-bs-toggle="modal"
+            data-bs-target="#delete-issue">
+            Delete
+          </button></li>
+
+      </ul>
+    </div>
+<div data-bs-toggle="modal" data-bs-target="#edit-issue">
+  <div class="">
+      <p >{{is.key}}</p>
+    </div>
+
+    <div>
+      <p > {{is.title}}</p>
+    </div>
+
+</div>
+    
+
+    <div class="d-flex justify-content-between">
+      <button class="" style="color: black ;" [style.background-color]="is.status ? '#00AAE7' : 'white'"
+        (click)="vote(is.id)">
+        {{ is.status ? "Voting Now..." : "Vote This Issue"}}
+      </button>
+
+      <button class="btn btn-light fw-bold "><i class="fa-solid fa-minus"></i></button>
+    </div>
+
+
+  </div>
+
+</div>

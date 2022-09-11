@@ -1,0 +1,53 @@
+<div class="card custom-card mt-3">
+    <div class="card-body bg1">
+        <h6 class="card-text style2"> {{discussion.content}}</h6>
+    </div>
+    <div class="card-footer">
+        <h6 class="d-inline-block style1">{{discussion.displayName}}</h6>
+        <a data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-comment cr"
+                style="color: #414ba4;margin-left: 10px;"></i></a>
+        <div class="dropdown float-end">
+            <div type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa-solid fa-ellipsis "></i>
+            </div>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-pen m-1"></i>Edit
+                        card</a>
+                </li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy m-1"></i>Duplicate
+                        card</a></li>
+                <li><a class="dropdown-item" href="#"><i
+                            class="fa-solid fa-trash-can m-1"></i>Delete</a></li>
+            </ul>
+        </div>
+        <i class="fa-solid fa-thumbs-down float-end m-2"></i>
+        <i class="fa-solid fa-thumbs-up float-end m-1"></i>
+    </div>
+
+    <!-- Comment -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg1" style="height: 150px;">
+                    <button type="button" class="btn-close mb-8" data-bs-dismiss="modal"></button>
+                </div>
+                <h6 class="text-header1">{{discussion.displayName}}</h6>
+                <h5 class="text-header2">{{discussion.content}}</h5>
+
+                <!-- <div class="modal-body" *ngFor="let i3 of discussion.discussionList">
+                    <div class="modalbody">
+                        <h6>Hoai R</h6>
+                        <p>dd</p>
+                    </div>
+                </div> -->
+                <div class="modal-footer">
+                    <textarea class="styleCM" cols="2" placeholder="Add Comment"></textarea>
+                    <button class="style-b1 text-white" type="submit">Comment</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Comment -->
+</div>

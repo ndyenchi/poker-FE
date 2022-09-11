@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+<form form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="w3-container w3-text-blue w3-margin">
+    <div class="modal-body">
+        <div class="editUser">
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                <div class="w3-rest" >
+                    <input class="w3-input w3-border" formControlName="fullName" name="fullName" type="text"
+                        placeholder="Full Name"  value="user.name" [(ngModel)]="user.name">
+                </div>
+                <div *ngIf="UserForm.fullName.invalid && (UserForm.fullName.dirty||UserForm.fullName.touched)" class="alert alert-danger mt-1 form-danger " >
+                    <div *ngIf="UserForm.fullName.errors">
+                        <div *ngIf="UserForm.fullName.errors.required">
+                            <small class="form-text text-danger ">
+                              Full Name not empty</small>
+                        </div>
+                        <div *ngIf="UserForm.fullName.errors.maxlength" >
+                          <small class="form-text text-danger">You cannot enter more than 50 characters.</small>
+                      </div>
+                      </div>
+                 </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" formControlName="displayName" name="last" type="text"
+                        placeholder="Display Name" value="user.displayName" [(ngModel)]="user.displayName">
+                </div>
+                <div *ngIf="UserForm.displayName.invalid && (UserForm.displayName.dirty||UserForm.displayName.touched)" class="alert alert-danger mt-1 form-danger " >
+                    <div *ngIf="UserForm.displayName.errors">
+                        <div *ngIf="UserForm.displayName.errors.required">
+                            <small class="form-text text-danger ">
+                                Display Name not empty</small>
+                        </div>
+                        <div *ngIf="UserForm.displayName.errors.maxlength" >
+                            <small class="form-text text-danger">You cannot enter more than 10 characters.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-calendar"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" formControlName="dob" name="dob" type="date"
+                        placeholder="Date of Birth" value="user.dob" [(ngModel)]="user.dob">
+                </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" formControlName="phone" name="phone" type="text"
+                        placeholder="Phone" value="user.phone" [(ngModel)]="user.phone">
+                </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-home"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" formControlName="address" name="address" type="text"
+                        placeholder="Address" value="user.address" [(ngModel)]="user.address">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal-footer">
+
+        <div #closeEditUser type="button" class="btn btn-outline-primary btn-lg widthb" data-bs-dismiss="modal">Cancel</div>
+        <button type="submit" class="btn btn-primary btn-lg">Save</button>
+    </div>
+
+</form>

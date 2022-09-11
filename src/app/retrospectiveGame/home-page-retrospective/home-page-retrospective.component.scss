@@ -1,0 +1,172 @@
+
+  
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff; }
+  
+  
+  #sidebar {
+    min-width: 270px;
+    max-width: 270px;
+    background: #3e64ff;
+    color: #fff;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }
+    #sidebar.active {
+      min-width: 80px;
+      max-width: 80px;
+      text-align: center; }
+      #sidebar.active ul.components li {
+        font-size: 14px; }
+        #sidebar.active ul.components li a {
+          padding: 10px 0; }
+          #sidebar.active ul.components li a span {
+            margin-right: 0;
+            display: block;
+            font-size: 24px; }
+      #sidebar.active .logo {
+        padding: 10px 0; }
+      #sidebar.active .footer {
+        display: none; }
+    #sidebar .logo {
+      display: block;
+      color: #414ba4;
+      font-weight: 900;
+      padding: 10px 30px;
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      transition: 0.3s; }
+      @media (prefers-reduced-motion: reduce) {
+        #sidebar .logo {
+          -webkit-transition: none;
+          -o-transition: none;
+          transition: none; } }
+    #sidebar ul.components {
+      padding: 0;
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      transition: 0.3s; }
+      @media (prefers-reduced-motion: reduce) {
+        #sidebar ul.components {
+          -webkit-transition: none;
+          -o-transition: none;
+          transition: none; } }
+    #sidebar ul li {
+      font-size: 16px; }
+      #sidebar ul li > ul {
+        margin-left: 10px; }
+        #sidebar ul li > ul li {
+          font-size: 14px; }
+      #sidebar ul li a {
+        padding: 10px 30px;
+        display: block;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        #sidebar ul li a span {
+          margin-right: 15px; }
+          @media (max-width: 991.98px) {
+            #sidebar ul li a span {
+              display: block; } }
+        #sidebar ul li a:hover {
+          color: #fff; }
+      #sidebar ul li.active > a {
+        background: transparent;
+        color: #fff; }
+    @media (max-width: 991.98px) {
+      #sidebar {
+        min-width: 80px;
+        max-width: 80px;
+        text-align: center;
+        margin-left: -80px !important; }
+        #sidebar.active {
+          margin-left: 0 !important; } }
+  
+  a[data-toggle="collapse"] {
+    position: relative; }
+  
+  .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  
+  @media (max-width: 991.98px) {
+    #sidebarCollapse span {
+      display: none; } }
+  
+  .footer {
+    padding: 0 30px; }
+    @media (max-width: 991.98px) {
+      .footer {
+        display: none; } }
+  
+  #content {
+    width: 100%;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }
+  
+  .btn.btn-primary {
+    background: #3e64ff;
+    border-color: #3e64ff; }
+    .btn.btn-primary:hover, .btn.btn-primary:focus {
+      background: #3e64ff !important;
+      border-color: #3e64ff !important; }
+  .tablink-text{
+    font-family: Poppins;
+    font-size: 17px;
+    border: none;
+    transition: .1s;
+    text-transform: capitalize;
+    color: #414ba4;
+  }
+  .icon-home{
+    color: #414ba4;
+  }
+  .position-img{
+    width: 40px;
+    position: relative;
+    left: 1152px;
+    top: 3px;
+  }
+  .position-drop{
+    position: relative;
+    top: -33px;
+    left: 1200px;
+  }
+  .button-home{
+    background-color: #fafafa;
+    border: 1px dashed #d9dbe9;
+    border-radius: 20px;
+    width: 110px;
+    height: 130px;
+    box-shadow: 0 9px #999;
+  }
+  .button-board{
+    background-color: #fafafa;
+    border: 1px solid #d9dbe9;
+    border-radius: 20px;
+    width: 110px;
+    height: 130px;
+  }
+  .mr-left{
+    margin-left: 50px;
+  }
+  .img-board{
+    height: 106px;
+    margin-top: 25px;
+    margin-left: 16px;
+    width: 73px;
+  }

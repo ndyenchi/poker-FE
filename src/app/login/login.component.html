@@ -1,0 +1,134 @@
+<div class="modal fade" id="staticBackdropLogin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="d-flex justify-content-between ">
+                    <h5 class="modal-title my-4" id="staticBackdropLabel">Sign in</h5>
+                    <button #close type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form form (ngSubmit)="doLogin()" [formGroup]="loginForm">
+                    <div>
+                        <input type="text" class="form-control" name="email" formControlName="email" id="email"
+                            maxlength="50" placeholder="Email" />
+                    </div>
+                    <div *ngIf="FormLogin.email.invalid && (FormLogin.email.dirty||FormLogin.email.touched)"
+                        class="alert alert-danger mt-1">
+                        <div *ngIf="FormLogin.email.errors">
+                            <div *ngIf="FormLogin.email.errors.required">
+                                <small class="form-text text-danger">Email is required.</small>
+                            </div>
+                        </div>
+                        <div *ngIf="FormLogin.email.errors.email">
+                            <small id="emailHelp" class="form-text text-danger">Email is invalid</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="passeyes">
+                        <input [type]="hiden ? 'password':'text' " class="form-control" name="password"
+                            formControlName="password" id="password" maxlength="50" placeholder="Password " />
+                        <span class="eyes" (click)="hiden = !hiden"><i
+                                [class]="hiden ? 'fa fa-eye' : 'fa fa-eye-slash' "></i></span>
+
+                    </div>
+                    <div *ngIf="FormLogin.password.invalid && (FormLogin.password.dirty||FormLogin.password.touched) "
+                        class="alert alert-danger mt-1 ">
+                        <div *ngIf="FormLogin.password.errors">
+                            <div *ngIf="FormLogin.password.errors.required">
+                                <small class="form-text text-danger">Password is required.</small>
+                            </div>
+                        </div>
+                        <div *ngIf="FormLogin.password.errors.pattern">
+                            <small id="emailHelp" class="form-text text-danger">Password must be at least 8 characters
+                                long, at least one uppercase, one lowercase, one special characters, and one
+                                number</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                        <br />
+                        <div class="d-flex justify-content-between mt-4  mb-3">
+                            <p class="h6"><a class="r text-decoration-none pe-auto text-primary" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop1">
+                                    Create Account
+                                </a></p>
+                            <p class="h6"><a class="r text-decoration-none pe-auto text-primary " data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2" data-bs-dismiss="modal">
+                                    Forgot?
+                                </a></p>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="alert alert-success" *ngIf="isLoggedIn">
+                    Logged in as {{ roles }}.
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <form form (ngSubmit)="doLogin()" [formGroup]="loginForm">
+    <div>
+        <input type="text" class="form-control" name="email" formControlName="email" id="email" maxlength="50"  placeholder="Email"/>
+    </div>
+    <div *ngIf="FormLogin.email.invalid && (FormLogin.email.dirty||FormLogin.email.touched)" class="alert alert-danger mt-1" >
+        <div *ngIf="FormLogin.email.errors">
+            <div *ngIf="FormLogin.email.errors.required">
+                <small class="form-text text-danger">Email is required.</small>
+            </div>
+          </div>
+          <div *ngIf="FormLogin.email.errors.email">
+            <small id="emailHelp" class="form-text text-danger">Email is invalid</small>
+        </div>
+     </div>
+    <br>
+    <div class="passeyes"> 
+        <input  [type]="hiden ? 'password':'text' " class="form-control" name="password" formControlName="password" id="password" maxlength="50" placeholder="Password "/>
+        <span class="eyes" (click)="hiden = !hiden"><i [class]="hiden ? 'fa fa-eye' : 'fa fa-eye-slash' "></i></span>
+
+    </div>
+    <div *ngIf="FormLogin.password.invalid && (FormLogin.password.dirty||FormLogin.password.touched) "class="alert alert-danger mt-1 ">
+        <div *ngIf="FormLogin.password.errors">
+            <div *ngIf="FormLogin.password.errors.required">
+                <small class="form-text text-danger">Password is required.</small>
+            </div>
+          </div>
+          <div *ngIf="FormLogin.password.errors.pattern">
+            <small id="emailHelp" class="form-text text-danger">Password must be at least 8 characters long, at least one uppercase, one lowercase, one special characters, and one number</small>
+        </div>
+     </div>
+    <br>
+    <div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+        <br />
+
+      <div class="d-flex justify-content-between mt-4  mb-3">
+        <p class="h6"><a class="r text-decoration-none pe-auto text-primary" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop1">
+            Create Account
+        </a></p>
+        <p class="h6"><a class="r text-decoration-none pe-auto text-primary " data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop2"  data-bs-dismiss="modal">
+            Forgot?
+        </a></p>
+      </div>
+    </div>
+</form>
+<div class="alert alert-success" *ngIf="isLoggedIn">
+    Logged in as {{ roles }}.
+</div> 
+
+ -->

@@ -1,0 +1,249 @@
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active" style="background-color: white">
+            <h1 style="color: #414ba4">
+                <a href="index.html" class="logo" style="color: #414ba4">M.</a>
+            </h1>
+            <button (click)="test()">test</button>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="#"><span class="icon-home fa fa-home"></span> Home</a>
+                </li>
+                <li>
+                    <a href="#"><span class="icon-home fa fa-user"></span> About</a>
+                </li>
+                <li>
+                    <a href="#"><span class="icon-home fa fa-sticky-note"></span> Blog</a>
+                </li>
+                <li>
+                    <a href="#"><span class="icon-home fa fa-cogs"></span> Services</a>
+                </li>
+                <li>
+                    <a href="#"><span class="icon-home fa fa-paper-plane"></span> Contacts</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <div>
+                <h6 class="text-title">{{board.name}} {{myDate | date:'dd-MM'}}</h6>
+            </div>
+            <div>
+                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle position-img"
+                    style="width: 40px;" alt="Avatar" />
+                <div class="dropdown position-drop">
+                    <div type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i style="font-size: 20px" class="fa-solid fa-chevron-down icon-home"></i>
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Profile Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Support</a></li>
+                        <li><a class="dropdown-item" href="#">Sing Out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- //action -->
+            <!-- Button trigger modal -->
+
+            <div class="dropdown slform">
+                <div type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <p style="text-align: center;align-items: center; position: relative; top: 5px;"> Action</p>
+                </div>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                        <button style="background-color: white;color: black; height: 36px;border: none;" type="button"
+                            data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-dismiss="modal">
+                            <i class="fa-solid fa-trash-can"></i> Delete
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- <button  class="btn btn-outline-secondary marginlist"
+        mwlConfirmationPopover
+        [popoverMessage]="popoverMessage"
+        placement="right"
+        (confirm)="deleteBoard()"
+        (cancel)="cancelClicked = true"
+      >
+      Delete</button> -->
+            <!-- Button trigger modal -->
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <i class="fa-solid fa-trash-can icon-delete"></i>
+                        <h5 style="color: black; font-size: 33px;margin-left: 21px;" class=" modal-title"
+                            id="exampleModalLabel">Delete this board?</h5>
+                        <div>
+                            <p style="color: black;margin-left: 26px;margin-top: 22px;">You are about to delete a board.
+                                This will also permanently delete all the data related to this board.</p>
+                        </div>
+                        <div style="padding-bottom: 28px">
+                            <button type="button" class="btn btn-info bt-cancle" data-mdb-dismiss="modal">Close</button>
+                            <button type="button" (click)="deleteBoard()" class="btn btn-info bt-delete"
+                                data-mdb-dismiss="modal">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-left: 30px;margin-top: 60px;">
+                <div class="col-3 bg-board" *ngFor="let i of boardColumn; let index = index">
+                    <h6 class="text-board">{{i.title}}</h6>
+                    <div class="row icon-top">
+                        <div class="col-1"><i class="fa-solid fa-circle-plus"></i></div>
+                        <div class="col-1">
+                            <div class="dropdown">
+                                <div type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa-solid fa-sort"></i>
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" (click)="sortDiscussion(0, index)"><i
+                                        class="fa-solid fa-calendar-plus"></i>  Sort
+                                                by Create Date </a></li>
+                                    <li><a class="dropdown-item" (click)="sortDiscussion(1, index)"><i
+                                                class="fa-solid fa-thumbs-down"></i>  Sort
+                                            by Down Votes</a></li>
+                                    <li><a class="dropdown-item" (click)="sortDiscussion(2, index)"><i
+                                        class="fa-solid fa-thumbs-up"></i>  Sort by
+                                                Up Votes</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="dropdown">
+                                <div type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <form (keydown.enter)="onSubmit(i.id)" [formGroup]="discussionForm">
+                        <div class="card text-center custom-card">
+                            <div class="card-body" style="height: 143px;">
+                                <div class="form-outline" style="height: 12px;">
+                                    <i class="fa-solid fa-face-smile icon-input"></i>
+                                    <textarea class="form-control" id="textAreaExample1" name="content" rows="3"
+                                        formControlName="content"></textarea>
+                                    <label class="form-label" for="textAreaExample">Press Enter to Add Card</label>
+                                </div>
+                                <div class="row"
+                                    style="margin-top: 100px;background-color: white; border-top: 1px solid;">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div class="card custom-card mt-3" *ngFor="let i2 of i.discussionList">
+                        <form (keydown.enter)="editDiscussion(i2.id)" [formGroup]="editDiscussionForm">
+                            <div class="card-body">
+                                <input class="input-content" type="text" [formControlName]="i2.id" [(ngModel)] ="i2.content">
+                            </div>
+                            <div class="card-footer">
+                                <h6 class="d-inline-block style1" style="color: black;font-size: 13px;">
+                                    {{i2.displayName}}</h6>
+                                <a type="button" class="comment" (click)="preview(template,i2)"><i
+                                        class="fa-solid fa-comment cr"></i></a>
+                                <div class="dropdown float-end">
+                                    <div type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis "></i>
+                                    </div>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><button class="dropdown-item"><i class="fa-solid fa-pen m-1"></i>Edit
+                                                card</button>
+                                        </li>
+                                        <li (click)="duplicate(i2, i.id, index)"><button class="dropdown-item"><i
+                                                    class="fa-solid fa-copy m-1"></i>Duplicate
+                                                card</button></li>
+                                        <li> <button 
+                                                style="background-color: white;color: black; height: 36px;border: none; margin-left: 16px"
+                                                type="button" (click)="deleteDis(templateDelete,id)">
+                                                <i class="fa-solid fa-trash-can"></i> Delete
+                                            </button></li>
+
+                                    </ul>
+                                </div>
+                                <!-- ////////////////////////////////// -->
+                                <!-- Modal Delete Discussion-->
+                                <ng-template #templateDelete>
+                                <div class="my-modal">
+                                    <div class="">
+                                        <div class="modal-content">
+                                            <i class="fa-solid fa-trash-can icon-delete"></i>
+                                            <h5 style="color: black; font-size: 33px;margin-left: 21px;"
+                                                class=" modal-title" id="exampleModalLabel">Are you sure ?</h5>
+                                            <div style="padding-bottom: 28px;padding-top: 46px">
+                                                <button type="button" class="btn btn-info bt-cancle"
+                                                    data-mdb-dismiss="modal">Close</button>
+                                                <button type="button"
+                                                    class="btn btn-info bt-delete"
+                                                    (click)="deleteDiscussion(i2.id)"
+                                                    data-mdb-dismiss="modal">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <form (ngSubmit)="saveVote(i.id)"  [formGroup]="voteForm"> -->
+                                </ng-template>
+                                <i style="position: relative; left: -10px; cursor: pointer;" (click)="saveUnVote(i2.id)"
+                                    class="fa-solid fa-thumbs-down float-end m-2"></i>
+                                <span class="voteUnNumber">{{i2.numberUnvote}}</span>
+                                <!-- // -->
+                                <i style="position: relative; left: -17px; cursor: pointer;" (click)="saveVote(i2.id)"
+                                    class="fa-solid fa-thumbs-up float-end m-1"></i>
+                                <span class="voteNumber">{{i2.numberVote}}</span>
+                                <!-- </form> -->
+                            </div>
+                        </form>
+                        <!-- comment -->
+                        <ng-template #template>
+                            <form (ngSubmit)="onSubmitComment(i2.id)" [formGroup]="commentForm">
+                                <div class="my-modal">
+                                    <div class="">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg1" style="height: 120px;">
+                                            </div>
+                                            <h6 class="text-header1">{{displayName2}}</h6>
+                                            <h5 class="text-header2">{{discussionModal.content}}</h5>
+                                            <div class="content-wrapper">
+                                                <div class="modal-body" *ngFor="let i3 of discussionModal.commentList">
+                                                    <div class="modalbody">
+                                                        <p style="font-size: 12px;">{{i3.displayName}} </p>
+                                                        <h6>{{i3.content}}</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <textarea class="styleCM" cols="2" formControlName="content"
+                                                    name="content" placeholder="Add Comment"></textarea>
+                                                <button class="style-b1 text-white" type="submit">Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </ng-template>
+                        <!-- endcomment  -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Content  -->
+        </div>
+    </div>
+
+
+</body>

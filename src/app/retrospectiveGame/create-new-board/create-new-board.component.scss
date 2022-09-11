@@ -1,0 +1,29 @@
+.margin-all{
+    border-radius: 10px;
+    margin-top: 15px;
+}
+.button-cancle{
+    border: 1px solid #d9dbe9;
+    color: #313342;
+    font-weight: 500;
+    background-color: white;
+    text-transform: capitalize;
+    border-radius: 10px;
+    height: 45px;
+    width: 120px;
+}
+.button-create{
+    border: 1px solid #d9dbe9;
+    color: white;
+    font-weight: 500;
+    background-color: #414ba4;
+    text-transform: capitalize;
+    border-radius: 10px;
+    height: 45px;
+    width: 120px;
+}
+.text-input{
+    position: relative;
+    top: -32px;
+    left: 13px;
+}
